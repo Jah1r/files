@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>fiece</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#222;user-select:none;overflow-x:hidden}
+    canvas,video{background:#111;outline:none}
+  </style>
+</head>
+<body>
+  <canvas></canvas>
+  <video src="https://github.com/imjahir/files/blob/main/youbald.mp4?raw=true" width="288" height="160" controls autoplay loop></video>
+  <script>
+    const d=document,c=d.querySelector("canvas"),v=d.querySelector("video"),x=c.getContext("2d"),{max,min,floor:fl,random:rn}=Math,rf=(n,x)=>rn()*(x-n)+n,ri=(n,x)=>fl(rf(n,x));v.src="https://github.com/imjahir/files/blob/main/"+["balding","youbald","jblaugh","wealthy"][fl(rn()*4)]+".mp4?raw=true";let W,H,VW,VH,wx,hx,wn,hn,wd,hd,o,f=!1,M="b",m=!0;function fx(){VW=v.videoWidth;VH=v.videoHeight;W=c.width=VW>575?VW/2:VW;H=c.height=VH>319?VH/2:VH;wx=max(VW,W),wn=min(VW,W);hx=max(VH,H),hn=min(VH,H);wd=wx/wn;hd=hx/hn;o=VW>=W||VH>=H?"/":"*"}class P{constructor(x,y,w,h,v,p){this.bx=this.x=x;this.by=this.y=y;this.w=w;this.h=h;this.v=v;this.p=p;this.dx=rf(-0.5,0.5);this.dy=rf(-0.5,0.5);this.a=rf(0,360);this.ds=ri(9,81)}};P.prototype.dr=function(){x.drawImage(v,this.p[0],this.p[1],this.p[2],this.p[3],this.x,this.y,this.w,this.h)};P.prototype.vp=function(pa){if(this.x!=pa[this.v].bx)this.x-=(this.x-pa[this.v].bx)/this.ds;if(this.y!=pa[this.v].by)this.y-=(this.y-pa[this.v].by)/this.ds};P.prototype.bp=function(){if(this.x!=this.bx)this.x-=(this.x-this.bx)/this.ds;if(this.y!=this.by)this.y-=(this.y-this.by)/this.ds};P.prototype.up=function(ps){this.dr();if(this.x+this.w>W+W/8||this.x<-W/8)this.dx*=-1;if(this.y+this.h>H+H/8||this.y<-H/8)this.dy*=-1;if(m){if(M=="v")this.vp(ps);else if(M=="b")this.bp();else if(M=="r")this.x+=this.dx,this.y+=this.dy;else 0}};function au(a=1){let ua=[];for(let i=1;i<=a;){let r=fl(rn()*a);if(!ua.includes(r)&&r!=i)ua.push(r),++i}return ua}let ps,ua,k=0;function it(s=4){if(!f){fx();f=!0;ps=[];ua=au(s*s);for(let i=0;i<VH;i+=VH/s){for(let j=0;j<VW;j+=VW/s,++k){if(o=="/"){let x=j/wd,y=i/hd,w=VW/s/wd,h=VH/s/hd,v=ri(0,s*s),p=[j,i,VW/s,VH/s];ps.push(new P(x,y,w,h,ua[k],p))}else if(o=="*"){let x=j*wd,y=i*hd,w=VW/s*wd,h=VH/s*hd,v=ri(0,s*s),p=[j,i,VW/s,VH/s];ps.push(new P(x,y,w,h,ua[k],p))}}}}}let id=!1;function an(){x.clearRect(0,0,W,H);ps.forEach(p=>p.up(ps));!v.paused?requestAnimationFrame(an):0}function upp(){ua=au(ps.length);for(let u in ua)ps[u].v=ua[u],ps[u].ds=ri(9,81),ps[u].dx=rf(-0.5,0.5),ps[u].dy=rf(-0.5,0.5)}function upm(){let t;if(!v.paused){do{t="vbr"[fl(rn()*3)]}while(t==M);M=t;upp()}}v.onplay=function(){if(!id)it(),an(),id=!0;requestAnimationFrame(an)};c.onclick=upm;this.onkeydown=function(e){let k=e.key.toLowerCase();if(!v.paused){if(k=="m")m=!m;if("vbr".includes(k)){if(k!=M)M=k,m=!0;upp()}}}
+  </script>
+</body>
+</html>
